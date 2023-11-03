@@ -1,0 +1,3247 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+    <style>
+        @import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
+        body {
+            /*background: #222D32;*/
+            all: unset;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .login-box {
+            margin-top: 75px;
+            height: auto;
+            background: #1A22267A;
+            text-align: center;
+            box-shadow: 0 3px 6px rgb(255 255 255 / 16%), 0 3px 6px rgb(131 62 62 / 23%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+
+        .login-title {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 30px;
+            letter-spacing: 2px;
+            margin-top: 15px;
+            font-weight: bold;
+            color: #ECF0F5;
+        }
+
+        .login-form {
+            margin-top: 25px;
+            text-align: left;
+            width: 80%;
+            padding-left: 36px;
+        }
+
+        input[type=text] {
+            background-color: #1A22267A;
+            border: none;
+            border-bottom: 2px solid #ffffff;
+            border-top: 0px;
+            border-radius: 0px;
+            font-weight: bold;
+            outline: 0;
+            margin-bottom: 20px;
+            padding-left: 0px;
+            color: #ECF0F5;
+        }
+
+        input[type=password] {
+            background-color: #1A2226;
+            border: none;
+            border-bottom: 2px solid #ffffff;
+            border-top: 0px;
+            border-radius: 0px;
+            font-weight: bold;
+            outline: 0;
+            padding-left: 0px;
+            margin-bottom: 20px;
+            color: #ECF0F5;
+        }
+
+        .form-group {
+            margin-bottom: 40px;
+            outline: 0px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-control:focus {
+            border-color: inherit;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            border-bottom: 2px solid #0DB8DE;
+            outline: 0;
+            background-color: #1A2226;
+            color: #ECF0F5;
+        }
+
+        input:focus {
+            outline: none;
+            box-shadow: 0 0 0;
+        }
+
+        label {
+            margin-bottom: 0px;
+        }
+
+        .form-control-label {
+            font-size: 15px;
+            color: #ffffff;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .login-btm {
+            float: left;
+        }
+
+        .login-button {
+            padding-right: 0px;
+            text-align: right;
+            margin-bottom: 25px;
+        }
+
+        .login-text {
+            text-align: left;
+            padding-left: 0px;
+            color: #A2A4A4;
+        }
+
+        .loginbttm {
+            padding: 0px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .main-container {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .row {
+            height: 70%;
+            width: 50%;
+        }
+
+        .login-key img {
+            width: 85px;
+        }
+
+        .background {
+            margin: 0;
+            padding: 0;
+            background: url("https://i.pinimg.com/originals/45/9f/76/459f7679b3efcdc8a6e7b7a8e686e839.jpg");
+            height: 100vh;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .l-button {
+            position: relative;
+            margin: 0;
+            padding: 0.8em 1em;
+            outline: none;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            border: none;
+            background-color: #1c9cd2;
+            border-radius: 10px;
+            color: #ffffff;
+            font-weight: 300;
+            font-size: 18px;
+            font-family: inherit;
+            z-index: 0;
+            overflow: hidden;
+
+        }
+
+
+        @keyframes sh0 {
+            0% {
+                transform: rotate(0deg) translate3d(0, 0, 0);
+            }
+
+            25% {
+                transform: rotate(7deg) translate3d(0, 0, 0);
+            }
+
+            50% {
+                transform: rotate(-7deg) translate3d(0, 0, 0);
+            }
+
+            75% {
+                transform: rotate(1deg) translate3d(0, 0, 0);
+            }
+
+            100% {
+                transform: rotate(0deg) translate3d(0, 0, 0);
+            }
+        }
+
+        .l-button:hover span {
+            animation: storm 0.7s ease-in-out both;
+            animation-delay: 0.06s;
+        }
+
+        .l-button::before,
+        .l-button::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: #fff;
+            opacity: 0;
+            transition: transform 0.15s cubic-bezier(0.02, 0.01, 0.47, 1), opacity 0.15s cubic-bezier(0.02, 0.01, 0.47, 1);
+            z-index: -1;
+            transform: translate(100%, -25%) translate3d(0, 0, 0);
+        }
+
+        .l-button:hover::before,
+        .l-button:hover::after {
+            opacity: 0.15;
+            transition: transform 0.2s cubic-bezier(0.02, 0.01, 0.47, 1), opacity 0.2s cubic-bezier(0.02, 0.01, 0.47, 1);
+        }
+
+        .l-button:hover::before {
+            transform: translate3d(50%, 0, 0) scale(0.9);
+        }
+
+        .l-button:hover::after {
+            transform: translate(50%, 0) scale(1.1);
+        }
+
+        .containers {
+            height: 155px;
+            position: relative;
+            max-width: 320px;
+            margin: 10px;
+
+        }
+
+        .containers .imageWrapper {
+            border: 3px solid #888;
+            width: 70%;
+            padding-bottom: 70%;
+
+            overflow: hidden;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .containers .imageWrapper img {
+            height: 105%;
+            width: initial;
+            max-height: 100%;
+            max-width: initial;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .file-upload {
+            position: relative;
+            overflow: hidden;
+            margin: 10px;
+        }
+
+        .file-upload {
+            position: relative;
+            overflow: hidden;
+            margin: 10px;
+            width: 100%;
+            max-width: 150px;
+            text-align: center;
+            color: #fff;
+            font-size: 1.2em;
+            background: transparent;
+            border: 2px solid snow;
+            padding: 0.85em 1em;
+            display: inline;
+            -ms-transition: all 0.2s ease;
+            -webkit-transition: all 0.2s ease;
+            transition: all 0.2s ease;
+        }
+
+        .file-upload:hover {
+            background: #1e76ea;
+
+        }
+
+        .file-upload input.file-input {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 0;
+            padding: 0;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            filter: alpha(opacity=0);
+            height: 100%;
+        }
+
+        .row-img {
+            display: flex;
+            justify-content: center;
+        }
+
+        .sub-container {
+            width: 100%;
+            height: 100%;
+            /* background-image: repeating-radial-gradient(#0c0a0a 80%, #2f312f 90%, #3f4549 90%); */
+            background-size: 65px 65px;
+            background-color:#04011c;
+        }
+        .form__group {
+            position: relative;
+            padding: 20px 0 0;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .form__field {
+            font-family: inherit;
+            width: 100%;
+            border: none;
+            border-bottom: 2px solid #6b6b6b;
+            outline: 0;
+            font-size: 17px;
+            color: #fff;
+            padding: 7px 0;
+            background: transparent;
+            transition: border-color 0.2s;
+        }
+
+
+
+        .form__field::placeholder {
+            color: transparent;
+        }
+
+        .form__field:placeholder-shown ~ .form__label {
+            font-size: 17px;
+            cursor: text;
+            top: 20px;
+        }
+
+        .field {
+            column-gap: 10px;
+        }
+
+        .form__label {
+            position: absolute;
+            top: 0;
+            display: block;
+            transition: 0.2s;
+            font-size: 17px;
+            color: white;
+            pointer-events: none;
+        }
+
+        .custom-label {
+            display: block;
+            transition: 0.2s;
+            font-size: 17px;
+            color: white;
+            pointer-events: none;
+        }
+
+        .form__field:focus {
+            padding-bottom: 6px;
+            font-weight: 700;
+            border-width: 3px;
+            border-image: linear-gradient(to right, #FFE699, #5D3294);
+            border-image-slice: 1;
+        }
+
+        .form__field:focus ~ .form__label {
+            position: absolute;
+            top: 0;
+            display: block;
+            transition: 0.2s;
+            font-size: 17px;
+            color: white;
+            font-weight: 700;
+        }
+
+        /* reset input */
+        .form__field:required, .form__field:invalid {
+            box-shadow: none;
+        }
+
+        .rows-main {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sub-pane-container {
+            width: 80%;
+        }
+
+        .box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: none;
+            border-bottom: 2px solid #6b6b6b;
+        }
+
+        .box select {
+            all: unset;
+            background-color: transparent;
+            color: #ffffff;
+            padding: 12px;
+            width:210px;
+            font-size: 20px;
+            font-weight: 200;
+
+        }
+
+        .box::before {
+            content: "\f13a";
+            font-family: FontAwesome;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 20%;
+            height: 100%;
+            text-align: center;
+            font-size: 28px;
+            line-height: 45px;
+            /*color: rgba(255, 255, 255, 0.5);
+            background-color: rgba(255, 255, 255, 0.1);*/
+            pointer-events: none;
+        }
+
+        .box:hover::before {
+            color: rgba(255, 255, 255, 0.6);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .box:hover {
+            color: rgba(255, 255, 255, 0.6);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .box:hover {
+            padding-bottom: 6px;
+            border-bottom-width: 3px;
+            border-bottom-image: linear-gradient(to right, #FFE699, #5D3294);
+            border-bottom-image-slice: 1;
+        }
+
+        .box select option {
+            all: unset;
+            color: #67e1a7;
+            background-color: black;
+            padding: 30px;
+        }
+
+        .wraper {
+            height: 50px;
+        }
+
+        .checkbox-wrapper-5 .check {
+            --size: 40px;
+            position: relative;
+            background: linear-gradient(90deg, greenyellow, greenyellow);
+            line-height: 0;
+            perspective: 400px;
+            font-size: var(--size);
+        }
+
+        .checkbox-wrapper-5 .check input[type="checkbox"],
+        .checkbox-wrapper-5 .check label,
+        .checkbox-wrapper-5 .check label::before,
+        .checkbox-wrapper-5 .check label::after,
+        .checkbox-wrapper-5 .check {
+            appearance: none;
+            display: inline-block;
+            border-radius: var(--size);
+            border: 0;
+            transition: .35s ease-in-out;
+            box-sizing: border-box;
+            cursor: pointer;
+        }
+
+        .checkbox-wrapper-5 .check label {
+            width: calc(2.2 * var(--size));
+            height: var(--size);
+            background: rosybrown;
+            overflow: hidden;
+        }
+
+        .checkbox-wrapper-5 .check input[type="checkbox"] {
+            position: absolute;
+            z-index: 1;
+            width: calc(.8 * var(--size));
+            height: calc(.8 * var(--size));
+            top: calc(.1 * var(--size));
+            left: calc(.1 * var(--size));
+            background: linear-gradient(45deg, #dedede, #ffffff);
+            box-shadow: 0 6px 7px rgba(0, 0, 0, 0.3);
+            outline: none;
+            margin: 0;
+        }
+
+        .checkbox-wrapper-5 .check input[type="checkbox"]:checked {
+            left: calc(1.3 * var(--size));
+        }
+
+        .checkbox-wrapper-5 .check input[type="checkbox"]:checked + label {
+            background: transparent;
+        }
+
+        .checkbox-wrapper-5 .check label::before,
+
+
+
+
+        .checkbox-wrapper-5 .check input[type="checkbox"]:checked + label::before,
+        .checkbox-wrapper-5 .check input[type="checkbox"]:checked + label::after {
+            left: calc(1.55 * var(--size));
+            top: calc(.4 * var(--size));
+            line-height: calc(.1 * var(--size));
+            transform: rotateY(360deg);
+        }
+
+        .checkbox-wrapper-5 .check input[type="checkbox"]:checked + label::after {
+            height: calc(.16 * var(--size));
+            top: calc(.55 * var(--size));
+            left: calc(1.6 * var(--size));
+            font-size: calc(.6 * var(--size));
+            line-height: 0;
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            row-gap: 10px;
+        }
+
+        .numbers {
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .numbers .form__group {
+            max-width: 250px;
+        }
+
+        div#mb1 {
+            position: relative;
+
+        }
+
+        .row-2 {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        .sub-row {
+            width: 262px;
+            padding: 20px;
+        }
+
+        .gap {
+            row-gap: 25px;
+        }
+
+        .gap .form__label {
+            position: absolute;
+            top: 0;
+            display: block;
+            transition: 0.2s;
+            font-size: 8px;
+            color: white;
+            pointer-events: none;
+        }
+
+        .gap .form__field:focus ~ .form__label {
+            position: absolute;
+            top: 0;
+            display: block;
+            transition: 0.2s;
+            font-size: 13px;
+            color: white;
+            font-weight: 700;
+        }
+
+        .gap .form__field:placeholder-shown ~ .form__label {
+            font-size: 10px;
+            cursor: text;
+            top: 2px;
+
+        }
+
+        .btn {
+            display: inline-block;
+            font-family: sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            color: #fff;
+            margin: 1rem auto;
+            padding: 0.7rem 2rem;
+            border-radius: 30em;
+            border-style: none;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background-color: transparent;
+            box-shadow: 1px 1px 12px #000000;
+        }
+        button#btnSaveHotel {
+           background-color: lawngreen;
+        }
+        button#btnUpdateHotel {
+            background-color: yellow;
+        }
+        button#btnDeleteHotel {
+            background-color: red;
+        }
+        button#btnClearHotelData {
+            background-color: rebeccapurple;
+        }
+
+        .btn::before {
+            content: "";
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #fff;
+            transform: translateX(-101%);
+            transition: all .3s ease;
+            z-index: -1;
+        }
+
+        .btn:hover {
+            color: #272727;
+            transition: all .3s ease;
+            cursor: pointer;
+        }
+
+        .btn:hover::before {
+            transform: translateX(0);
+        }
+
+        .butto-set {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .butto-set button:active {
+            color: white;
+        }
+
+        .butto-set button:nth-child(1)::before {
+            background-color: white;
+        }
+
+        .butto-set button:nth-child(1):active::before {
+            background-color: white;
+        }
+
+
+        .butto-set button:nth-child(2)::before {
+            background-color: white;
+        }
+
+        .butto-set button:nth-child(2):active::before {
+            background-color: white;
+        }
+
+        .butto-set button:nth-child(3)::before {
+            background-color: white;
+        }
+
+        .butto-set button:nth-child(3):active::before {
+            background-color: white;
+        }
+
+        .butto-set button:nth-child(4)::before {
+            background-color: white;
+        }
+
+        .butto-set button:nth-child(4):active::before {
+            background-color: white;
+        }
+
+        .sub-container-1 {
+            /* background-image: url(assert/img/background-3.jpg); */
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-color: #04011c;
+        }
+
+        .table-users .header {
+            background-color: rgb(255 255 255 / 33%);
+            color: white;
+            font-size: 1.5em;
+            padding: 1rem;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .table-users img {
+            border-radius: 50%;
+            height: 60px;
+            width: 60px;
+        }
+
+        .table-users {
+            border: 1px solid #ffffff;
+            border-radius: 5px;
+            box-shadow: 3px 3px 0 rgb(106 56 56 / 10%);
+            max-width: 80%;
+            margin: 1em auto;
+            overflow: hidden;
+            width: 1000px;
+            background: transparent;
+        }
+
+        .table-users table {
+            width: 100%;
+        }
+
+        .table-users table td, .table-users table th {
+            color: #ffffff;
+            padding: 10px;
+        }
+
+        .table-users table td {
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .table-users table td:last-child {
+            font-size: 0.95em;
+            line-height: 1.4;
+            text-align: left;
+        }
+
+        .table-users table th {
+            background-color: rgb(0 0 0 / 48%);
+            font-weight: 300;
+        }
+
+        .table-users table tr:nth-child(2n) {
+            background-color: rgba(148, 237, 246, 0.27);
+        }
+
+        .table-users table tr:nth-child(2n+1) {
+            background-color: rgba(148, 237, 246, 0.15);
+        }
+
+        @media screen and (max-width: 700px) {
+            .table-users table, .table-users tr, .table-users td {
+                display: block;
+            }
+
+            .table-users td:first-child {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 100px;
+            }
+
+            .table-users td:not(:first-child) {
+                clear: both;
+                margin-left: 100px;
+                padding: 4px 20px 4px 90px;
+                position: relative;
+                text-align: left;
+            }
+
+            .table-users td:not(:first-child):before {
+                color: #001d21;
+                content: "";
+                display: block;
+                left: 0;
+                position: absolute;
+            }
+
+            .table-users td:nth-child(2):before {
+                content: "Name:";
+            }
+
+            .table-users td:nth-child(3):before {
+                content: "Email:";
+            }
+
+            .table-users td:nth-child(4):before {
+                content: "Phone:";
+            }
+
+            .table-users td:nth-child(5):before {
+                content: "Comments:";
+            }
+
+            .table-users tr {
+                padding: 10px 0;
+                position: relative;
+            }
+
+            .table-users tr:first-child {
+                display: none;
+            }
+        }
+
+        @media screen and (max-width: 500px) {
+            .table-users .header {
+                background-color: transparent;
+                color: white;
+                font-size: 2em;
+                font-weight: 700;
+                padding: 0;
+                text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+            }
+
+            .table-users img {
+                border: 3px solid;
+                border-color: #daeff1;
+                height: 100px;
+                margin: 0.5rem 0;
+                width: 100px;
+            }
+
+            .table-users td:first-child {
+                background-color: #c8e7ea;
+                border-bottom: 1px solid #91ced4;
+                border-radius: 10px 10px 0 0;
+                position: relative;
+                top: 0;
+                transform: translateY(0);
+                width: 100%;
+            }
+
+            .table-users td:not(:first-child) {
+                margin: 0;
+                padding: 5px 1em;
+                width: 100%;
+            }
+
+            .table-users td:not(:first-child):before {
+                font-size: 0.8em;
+                padding-top: 0.3em;
+                position: relative;
+            }
+
+            .table-users td:last-child {
+                padding-bottom: 1rem !important;
+            }
+
+            .table-users tr {
+                background-color: #94edf6 !important;
+                border: 1px solid #6cbec6;
+                border-radius: 10px;
+                box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+                margin: 0.5rem 0;
+                padding: 0;
+            }
+
+            .table-users {
+                border: none;
+                box-shadow: none;
+                overflow: visible;
+            }
+        }
+
+        .input-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-container .input {
+            width: 40px;
+            height: 9px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            padding: 18px 16px;
+            background-color: transparent;
+            cursor: pointer;
+            transition: all .5s ease-in-out;
+            z-index: 5;
+        }
+
+        .input-container .input::placeholder {
+            color: transparent;
+        }
+
+        .input-container .input:focus::placeholder {
+            color: rgba(0, 0, 0, 0.98);
+        }
+
+        .input-container .input:focus, .input:not(:placeholder-shown) {
+            background-color: rgb(255, 255, 255);
+            border: 1px solid rgb(98, 0, 255);
+            width: 290px;
+            cursor: none;
+            padding: 18px 16px 18px 40px;
+            z-index: 0;
+            color: black;
+        }
+
+        .input-container .icon {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 40px;
+            width: 40px;
+            background-color: #fff;
+            border-radius: 10px;
+            z-index: 1;
+            fill: rgb(13, 3, 30);
+            border: 1px solid rgb(98, 0, 255);
+        }
+
+        .input-container .input:hover + .icon {
+            transform: rotate(360deg);
+            transition: .2s ease-in-out;
+        }
+
+        .input-container .input:focus + .icon, .input-container .input:not(:placeholder-shown) + .icon {
+            z-index: 2;
+            background-color: transparent;
+            border: none;
+        }
+
+        .custum-file-upload {
+            height: 200px;
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            /*align-items: space-between;*/
+            gap: 20px;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed #e8e8e8;
+            background-color:#0f72dc;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0px 48px 35px -48px #e8e8e8;
+        }
+        label#idfront {
+            width: 200px;
+            height: 140px;
+        }
+        label#idrear {
+            width: 200px;
+            height: 140px;
+        }
+        label#gpropic {
+            width: 200px;
+            height: 140px;
+        }
+        label#nicfront {
+            width: 200px;
+            height: 140px;
+        }
+        label#nicrear {
+            width: 200px;
+            height: 140px;
+        }
+        label#addmore {
+            width: 200px;
+            height: 140px;
+        }
+        button#btnSaveGuide {
+            background-color: lawngreen;
+        }
+        button#btnUpdateGuide {
+            background-color: yellow;
+        }
+        button#btndeleteGuide {
+            background-color: red;
+        }
+        button#btnclearGuide {
+            background-color: rebeccapurple;
+        }
+
+        .in-img {
+            position: absolute;
+            height: 183px;
+            width: 236px;
+        }
+
+        .custum-file-upload .icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .custum-file-upload .icon svg {
+            height: 80px;
+            fill: #e8e8e8;
+        }
+
+        .custum-file-upload .text {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .custum-file-upload .text span {
+            font-weight: 400;
+            color: #e8e8e8;
+        }
+
+        .custum-file-upload input {
+            display: none;
+        }
+
+        .columns-2 {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .text-area {
+            height: 146px !important;
+            width: 258px !important;
+        }
+
+        .text-area textarea {
+            height: 146px !important;
+            width: 258px !important;
+            background-color: transparent;
+            box-shadow: rgba(50, 93, 85, 0.25) 0px 50px 100px -20px, rgba(169, 69, 69, 0.3) 0px 30px 60px -30px;
+            color: white;
+        }
+
+        .table-guide {
+            margin-top: 89px;
+        }
+
+        .table-guide .header {
+            background-color: rgb(255 255 255 / 51%) !important;
+        }
+
+        .table-guide table th {
+            background-color: rgb(0 0 0) !important;
+            font-weight: 300;
+        }
+
+        .table-guide table tr:nth-child(2n) {
+            background-color: rgba(148, 237, 246, 0.03) !important;
+        }
+
+        .table-guide table tr:nth-child(2n+1) {
+            background-color: rgba(148, 237, 246, 0.04);
+        }
+
+        .sub-container-1 .butto-set {
+            margin-top: 50px !important;
+        }
+
+        .sub-container-2 {
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-color: #04011c;
+        }
+
+        .box-1:before {
+            color: #69fadd;
+        }
+
+
+        .v-in .switch {
+            position: relative;
+            display: inline-block;
+            width: 120px;
+            height: 34px;
+        }
+
+        .v-in .switch input {
+            display: none;
+        }
+
+        .v-in .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #890000;
+            -webkit-transition: .4s;
+            transition: .4s;
+            border-radius: 20px;
+        }
+
+        .v-in .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        .v-in input:checked + .slider {
+            background-color: yellow;
+        }
+
+        .v-in input:focus + .slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+
+        .v-in input:checked + .slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(85px);
+        }
+
+        /*------ ADDED CSS ---------*/
+        .v-in .slider:after {
+            content: 'DIESEL';
+            color: white;
+            display: block;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left: 50%;
+            font-size: 10px;
+            font-family: Verdana, sans-serif;
+        }
+
+        .v-in input:checked + .slider:after {
+            content: 'PETROL';
+        }
+
+        /*--------- END --------*/
+
+        /* The switch - the box around the slider */
+        .v-in-h .switch {
+            font-size: 17px;
+            position: relative;
+            display: inline-block;
+            width: 3.5em;
+            height: 1.5em;
+        }
+
+        /* Hide default HTML checkbox */
+        .v-in-h .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        /* The slider */
+        .v-in-h .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 1rem 0rem 1rem;
+        }
+
+        .v-in-h .slider:before {
+            position: absolute;
+            content: "";
+            height: 1.5em;
+            width: 1.4em;
+            left: 0em;
+            bottom: 0em;
+            background-color: white;
+            transition: .4s;
+            border-radius: 1rem 0rem 1rem;
+            border: 3px solid white;
+        }
+
+        .v-in-h input:checked + .slider {
+            background-color: lawngreen;
+        }
+
+        input:focus + .slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+
+        .v-in-h input:checked + .slider:before {
+            transform: translateX(2.2em);
+            background-color: lawngreen;
+            border: 3px solid white;
+        }
+
+        .v-in-h input:checked + .slider::after {
+            color: white;
+            position: absolute;
+            right: 0.3rem;
+        }
+
+        .plane-switch {
+            --dot: #fff;
+            --street: #6B6D76;
+            --street-line: #A8AAB4;
+            --street-line-mid: #C0C2C8;
+            --sky-1: #60A7FA;
+            --sky-2: #010136;
+            --light-1: rgba(255, 233, 0, 1);
+            --light-2: rgba(255, 233, 0, .3);
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+            height: 23px;
+        }
+
+        .plane-switch input {
+            display: none;
+        }
+
+        .plane-switch input + div {
+            -webkit-mask-image: -webkit-radial-gradient(white, black);
+            position: relative;
+            overflow: hidden;
+            width: 50px;
+            height: 25px;
+            padding: 1px;
+            border-radius: 13px;
+            background: linear-gradient(90deg, var(--street) 0%, var(--street) 25%, var(--sky-1) 75%, var(--sky-2) 100%) left var(--p, 0%) top 0;
+            background-position-x: var(--p, 0%);
+            background-size: 400% auto;
+            transition: background-position 0.6s;
+        }
+
+        .plane-switch input + div:before, .plane-switch input + div:after {
+            content: "";
+            display: block;
+            position: absolute;
+            transform: translateX(var(--s, 0));
+            transition: transform 0.3s;
+        }
+
+        .plane-switch input + div:before {
+            width: 42px;
+            right: 2px;
+            top: 4px;
+            height: 1px;
+            background: var(--street-line);
+            box-shadow: 0 16px 0 0 var(--street-line);
+        }
+
+        .plane-switch input + div:after {
+            width: 2px;
+            height: 2px;
+            border-radius: 50%;
+            left: 23px;
+            top: 1px;
+            -webkit-animation: lights2 2s linear infinite;
+            animation: lights2 2s linear infinite;
+            box-shadow: inset 0 0 0 2px var(--light-1), 0 21px 0 var(--light-1), 8px 0 0 var(--light-2), 8px 21px 0 var(--light-2), 16px 0 0 var(--light-2), 16px 21px 0 var(--light-2);
+        }
+
+        .plane-switch input + div span {
+            display: block;
+            position: absolute;
+        }
+
+        .plane-switch input + div span.street-middle {
+            top: 12px;
+            left: 21px;
+            width: 3px;
+            height: 1px;
+            transform: translateX(var(--s, 0));
+            background: var(--street-line-mid);
+            box-shadow: 5px 0 0 var(--street-line-mid), 10px 0 0 var(--street-line-mid), 15px 0 0 var(--street-line-mid), 20px 0 0 var(--street-line-mid), 25px 0 0 var(--street-line-mid);
+            transition: transform 0.3s;
+        }
+
+        .plane-switch input + div span.cloud {
+            width: 12px;
+            height: 4px;
+            border-radius: 2px;
+            background: #fff;
+            position: absolute;
+            top: var(--ct, 8px);
+            left: 100%;
+            opacity: var(--co, 0);
+            transition: opacity 0.3s;
+            -webkit-animation: clouds2 2s linear infinite var(--cd, 0s);
+            animation: clouds2 2s linear infinite var(--cd, 0s);
+        }
+
+        .plane-switch input + div span.cloud:before, .plane-switch input + div span.cloud:after {
+            content: "";
+            position: absolute;
+            transform: translateX(var(--cx, 0));
+            border-radius: 50%;
+            width: var(--cs, 5px);
+            height: var(--cs, 5px);
+            background: #fff;
+            bottom: 1px;
+            left: 1px;
+        }
+
+        .plane-switch input + div span.cloud:after {
+            --cs: 6px;
+            --cx: 4px;
+        }
+
+        .plane-switch input + div span.cloud.two {
+            --ct: 20px;
+            --cd: 1s;
+            opacity: var(--co-2, 0);
+        }
+
+        .plane-switch input + div div {
+            display: table;
+            position: relative;
+            z-index: 1;
+            padding: 5px;
+            border-radius: 50%;
+            background: var(--dot);
+            transform: translateX(var(--x, 0));
+            transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.35, 1.2);
+        }
+
+        .plane-switch input + div div svg {
+            width: 13px;
+            height: 13px;
+            display: block;
+            color: var(--c, var(--street));
+            transition: color 0.6s;
+        }
+
+        .plane-switch input:checked + div {
+            --p: 100%;
+            --x: 25px;
+            --s: -50px;
+            --c: var(--sky-2);
+            --co: .8;
+            --co-2: .6;
+        }
+
+        @keyframes lights2 {
+            20%, 30% {
+                box-shadow: inset 0 0 0 2px var(--light-2), 0 21px 0 var(--light-2), 8px 0 0 var(--light-1), 8px 21px 0 var(--light-1), 16px 0 0 var(--light-2), 16px 21px 0 var(--light-2);
+            }
+
+            55%, 65% {
+                box-shadow: inset 0 0 0 2px var(--light-2), 0 21px 0 var(--light-2), 8px 0 0 var(--light-2), 8px 21px 0 var(--light-2), 16px 0 0 var(--light-1), 16px 21px 0 var(--light-1);
+            }
+
+            90%, 100% {
+                box-shadow: inset 0 0 0 2px var(--light-1), 0 21px 0 var(--light-1), 8px 0 0 var(--light-2), 8px 21px 0 var(--light-2), 16px 0 0 var(--light-2), 16px 21px 0 var(--light-2);
+            }
+        }
+
+        @keyframes clouds2 {
+            97% {
+                transform: translateX(-72px);
+                visibility: visible;
+            }
+
+            98%, 100% {
+                visibility: hidden;
+            }
+
+            99% {
+                transform: translateX(-72px);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        .sub-container-2 .row-img {
+            justify-content: space-between;
+            width: 80%;
+            align-self: center;
+        }
+
+        .img-left-margin {
+            margin-left: 75px;
+        }
+
+        .top-margin {
+            margin-top: 25px;
+        }
+
+        .sub-container-3 {
+            /* background-image: url(assert/img/backgound-6.jpg); */
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-color: #04011c;
+        }
+
+
+        .c-in-g .switch {
+            position: relative;
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+            border: 2px solid #dcdcdc;
+            background: #e0e0e0;
+            box-shadow: 7px 7px 23px rgba(0, 0, 0, 0.56), -7px -7px 23px rgba(0, 0, 0, 0.98);
+            overflow: hidden;
+            border-radius: 60px;
+        }
+
+        .c-in-g .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .c-in-g .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            -webkit-transition: 0.5s;
+            transition: 0.5s;
+        }
+
+        .c-in-g .chbox:checked + .slider:before {
+            background: #051660;
+            box-shadow: none;
+        }
+
+        .c-in-g .chbox:focus + .slider {
+            box-shadow: 0 0 1px #2196f3;
+        }
+
+        .c-in-g .slider {
+            color: #100101;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-family: sans-serif;
+        }
+
+        .c-in-g .slider--0 {
+            color: #130b0b;
+            font-weight: 600;
+            background-color: #49d84e;
+        }
+
+        .c-in-g .slider--1 div {
+            transition: 0.5s;
+        }
+
+        .c-in-g .slider--1 div {
+            position: absolute;
+            width: 100%;
+            height: 50%;
+            left: 0;
+        }
+
+        .c-in-g .chbox:checked ~ .slider--1 div:first-child {
+            transform: translateY(-100%);
+            transition-delay: 1s;
+        }
+
+        .c-in-g .chbox:checked ~ .slider--1 div:last-child {
+            transform: translateY(100%);
+            transition-delay: 1s;
+        }
+
+        .c-in-g .chbox:checked ~ .slider--2 {
+            transform: translateX(100%);
+            transition-delay: 0.5s;
+        }
+
+        .c-in-g .chbox:checked ~ .slider--3 {
+            transform: translateX(-100%);
+            transition-delay: 0s;
+        }
+
+        .c-in-g .slider--1 div:first-child {
+            transform: translateY(0);
+            top: 0;
+            background-color: #000000;
+            transition-delay: 0s;
+        }
+
+        .c-in-g .slider--1 div:last-child {
+            transform: translateY(0);
+            bottom: 0;
+            background-color: #000000;
+            border-top: 1px solid #e0e0e0;
+            transition-delay: 0s;
+        }
+
+        .c-in-g .slider--2 {
+            background-color: #000000;
+            transition-delay: 0.5s;
+            transform: translateX(0);
+            border-left: 1px solid #d2d2d2;
+        }
+
+        .c-in-g .slider--3 {
+            background-color: #e75af3;
+            transition-delay: 1s;
+            transform: translatex(0);
+            border-right: 1px solid #d2d2d2;
+        }
+
+        .wraper .c-in-g {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .columns {
+            padding: 5px;
+            margin-top: -30px;
+        }
+
+        .user-nic-img {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .user-nic-img input {
+            font-size: 10px;
+            text-align: center;
+            padding: 1rem;
+            background-color: #14adad;
+            border: 1px solid #fcfcfc;
+            border-radius: 1rem;
+            font-family: "Open Sans", sans-serif;
+            margin-top: 1rem;
+            color: #efefef;
+            /* position: relative; */
+            left: 60px;
+        }
+
+        .user-nic-img input[type=file]::file-selector-button {
+            display: none;
+        }
+
+        .user-nic-img img {
+            margin-top: 20px;
+            width: 200px;
+            height: 150px;
+            border: 1px solid white;
+        }
+        .nic-image {
+            width: 500px;
+            height: 300px;
+            gap: 20px;
+            justify-content: center;
+        }
+        button#btnSaveVehicle {
+            background-color: greenyellow;
+        }
+        button#btnDeleteVehicle {
+            background-color: red;
+        }
+        button#btnUpdateVehicle {
+            background-color: yellow;
+        }
+        button#btnClearVehicleData {
+            background-color: rebeccapurple;
+        }
+        button#btnSaveUser {
+            background-color: greenyellow;
+        }
+        button#btnUpdateUser {
+            background-color: yellow;
+        }
+        button#btnDeleteUser {
+            background-color: red;
+        }
+        button#btnClearCustomerDetails {
+            background-color: rebeccapurple;
+        }
+
+        button#btnSaveTravelPackage {
+            background-color: greenyellow;
+        }
+        button#btnUpdateTravelPackage {
+            background-color: yellow;
+        }
+        button#btnDeleteTravelPackage {
+            background-color: red;
+        }
+        button#btnClearTravelPackageDetails {
+            background-color: rebeccapurple;
+        }
+
+        .search_customer{
+            margin-top: 20px;
+            width: 230px;
+
+        }
+
+        .search_customer .container {
+            position: relative;
+            box-sizing: border-box;
+            width: fit-content;
+        }
+
+        .search_customer .mainbox {
+            box-sizing: border-box;
+            position: relative;
+            width: 230px;
+            height: 50px;
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: center;
+            justify-content: center;
+            border-radius: 160px;
+            background-color: rgb(0, 0, 0);
+            transition: all 0.3s ease;
+        }
+
+        .search_customer .checkbox:focus {
+            border: none;
+            outline: none;
+        }
+
+        .search_customer .checkbox:checked {
+            right: 10px;
+        }
+
+        .search_customer .checkbox:checked ~ .mainbox {
+            width: 50px;
+        }
+
+        .search_customer .checkbox:checked ~ .mainbox .search_input {
+            width: 0;
+            height: 0px;
+        }
+
+        .search_customer .checkbox:checked ~ .mainbox .iconContainer {
+            padding-right: 8px;
+        }
+
+        .search_customer .checkbox {
+            box-sizing: border-box;
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            right: 17px;
+            top: 10px;
+            z-index: 9;
+            cursor: pointer;
+            appearance: none;
+        }
+
+        .search_customer .search_input {
+            box-sizing: border-box;
+            height: 100%;
+            width: 170px;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            padding-bottom: 4px;
+            padding-left: 10px;
+            padding-top: 14px;
+            font-size: 1em;
+            color: white;
+            transition: all 0.3s ease;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        .search_customer .search_input::placeholder {
+            color: rgba(255, 255, 255, 0.776);
+        }
+
+        .search_customer .iconContainer {
+            box-sizing: border-box;
+            padding-top: 5px;
+            width: fit-content;
+            transition: all 0.3s ease;
+            padding-bottom: 18px;
+        }
+
+        .search_customer .search_icon {
+            box-sizing: border-box;
+            fill: white;
+            font-size: 1.3em;
+        }
+
+        .relative_position{
+            position: relative;
+        }
+
+        .search_vehicle{
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            margin: auto;
+        }
+
+        .search_vehicle .searchBox {
+            display: flex;
+            max-width: 430px;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            background: #484848;
+            border-radius: 15px;
+            position: relative;
+            left: 50px;
+            max-height: 59px;
+        }
+
+        .search_vehicle .searchButton {
+            color: white;
+            position: absolute;
+            right: 8px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background:dimgray;
+            border: 0;
+            display: inline-block;
+            transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+        }
+        /*hover effect*/
+        .search_vehicle button:hover {
+            color: #fff;
+            background-color: #1A1A1A;
+            box-shadow: rgba(0, 0, 0, 0.5) 0 10px 20px;
+            transform: translateY(-3px);
+        }
+        /*button pressing effect*/
+        .search_vehicle button:active {
+            box-shadow: none;
+            transform: translateY(0);
+        }
+
+        .search_vehicle .searchInput {
+            border: none;
+            background: none;
+            outline: none;
+            color: white;
+            font-size: 15px;
+            padding: 24px 46px 24px 26px;
+            margin: 7px;
+        }
+
+        .top-padding{
+            padding-top: 100px;
+        }
+
+        .invisible{
+            display: none;
+        }
+
+        .search_guide .search {
+            --input-line: #cccccc;
+            --input-text-color: #808080;
+            --input-text-hover-color: transparent;
+            --input-border-color: #808080;
+            --input-border-hover-color: #999999;
+            --input-bg-color: #333333;
+            --search-max-width: 250px;
+            --search-min-width: 150px;
+            --border-radius: 5px;
+            --transition-cubic-bezier: 150ms cubic-bezier(0.4,0,0.2,1);
+        }
+
+        .search_guide .search-box {
+            max-width: var(--search-max-width);
+            min-width: var(--search-min-width);
+            height: 35px;
+            border: 1px solid #f7f5f5;
+            border-radius: var(--border-radius);
+            padding: 5px 15px;
+            background: #353434;
+
+        }
+        .search_guide .search-box:hover {
+            border-color: var(--input-border-hover-color);
+        }
+
+        /*Section input*/
+        .search_guide .search-field {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            left: -5px;
+            border: 0;
+        }
+
+        .search_guide .input {
+            width: calc(100% - 29px);
+            height: 100%;
+            border: 0;
+            border-color: transparent;
+            font-size: 1rem;
+            padding: 0;
+            color: var(--input-line);
+            background: var(--input-bg-color);
+            border-right: 2px solid var(--input-border-color);
+            outline: none;
+        }
+
+        .search_guide .input::-webkit-input-placeholder {
+            color: var(--input-text-color);
+        }
+
+        .search_guide .input::-moz-input-placeholder {
+            color: var(--input-text-color);
+        }
+
+        .search_guide .input::-ms-input-placeholder {
+            color: var(--input-text-color);
+        }
+
+        .search_guide .input:focus::-webkit-input-placeholder {
+            color: var(--input-text-hover-color);
+        }
+
+        .search_guide .input:focus::-moz-input-placeholder {
+            color: var(--input-text-hover-color);
+        }
+
+        .search_guide .input:focus::-ms-input-placeholder {
+            color: var(--input-text-hover-color);
+        }
+
+        div#manval {
+            position: relative;
+            top: 53px;
+        }
+        div#gbday {
+            position: relative;
+            top: 53px;
+        }
+
+        /*Search button*/
+        .search_guide .search-box-icon {
+            width: 52px;
+            height: 42px;
+            position: absolute;
+            top: -4px;
+            right: -21px;
+            background: transparent;
+            border-bottom-right-radius: var(--border-radius);
+            border-top-right-radius: var(--border-radius);
+            transition: var(--transition-cubic-bezier);
+        }
+
+        .search_guide .search-box-icon:hover {
+            background: var(--input-border-color);
+        }
+
+        .search_guide .btn-icon-content {
+            width: 52px;
+            height: 35px;
+            top: -6px;
+            right: -21px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            border-bottom-right-radius: var(--border-radius);
+            border-top-right-radius: var(--border-radius);
+            transition: var(--transition-cubic-bezier);
+            opacity: .4;
+        }
+
+        .search_guide .btn-icon-content:hover {
+            opacity: .8;
+        }
+
+        .search_guide .search-icon {
+            width: 21px;
+            height: 21px;
+            position: absolute;
+            top: 11px;
+            right: 15px;
+        }
+
+        .search_guide {
+            display: flex;
+            justify-content: center;
+            margin-top: 22px;
+        }
+        .sub-container-4 {
+            /* background-image: url(assert/img/background-7.jpg); */
+            background-size: cover;
+            flex-direction: column;
+            background-color: #03031c;
+        }
+        .sub-container-4 .container {
+            margin: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 35px;
+        }
+
+        .sub-container-4 .input {
+            max-width: 214px;
+            height: 42%;
+            outline: none;
+            font-size: 14px;
+            font-weight: 500;
+            background-color: #fdfdfd;
+            caret-color: #ffffff;
+            color: #fff;
+            padding: 7px 10px;
+            border: 2px solid #939393;
+            border-top-left-radius: 7px;
+            border-bottom-left-radius: 7px;
+            margin-right: 1px;
+            transition: all .2s ease;
+            margin-bottom: 0;
+        }
+
+        .sub-container-4 .input:hover {
+            border: 2px solid rgba(255, 255, 255, 0.16);
+        }
+
+        .sub-container-4 .input:focus {
+            border: 2px solid #a970ff;
+            background-color: #0e0e10;
+        }
+
+        .sub-container-4 .search__btn {
+            border: none;
+            cursor: pointer;
+            background-color: rgba(42, 42, 45, 1);
+            border-top-right-radius: 7px;
+            border-bottom-right-radius: 7px;
+            height: 100%;
+            width: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .sub-container-4 .search__btn:hover {
+            background-color: rgba(54, 54, 56, 1);
+        }
+
+        .tp_details_container{
+            margin-top: 100px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        .tp_details {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-content: stretch;
+            flex-wrap: wrap;
+        }
+
+        .tp_table{
+            width: 80%;
+        }
+
+        .allRoundCorner{
+            width: 100% !important;
+            border-top-right-radius: 7px !important;
+            border-bottom-right-radius: 7px !important;
+        }
+        .tp-choice select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border: 0;
+            outline: 0;
+            background: none;
+            color: #b9b0b0;
+            box-shadow: none;
+            background-color: #53535f;
+            height: 34px;
+        }
+
+        .tp-choice select::-ms-expand {
+            display: none;
+        }
+
+        /* Custom Select wrapper */
+        .tp-choice .select {
+            position: relative;
+            display: flex;
+            width: min(20rem, 90vw);
+            background: var(--background-select);
+            border-radius: 7px;
+            overflow: hidden;
+            width: 238px;
+        }
+        .tp-choice .select select {
+            flex: 1;
+            padding-left: 1em;
+            cursor: pointer;
+            background: #f7f7f7;
+            color: black;
+            text-weight:bold;
+        }
+        .tp-choice .select::after {
+            content: "▼";
+            position: absolute;
+            right: 1rem;
+            top: 7px;
+            transition: 0.25s all ease;
+            pointer-events: none;
+        }
+        .tp-choice .select:hover::after {
+            color: #f39c12;
+            -webkit-animation: bounce 0.5s infinite;
+            animation: bounce 0.5s infinite;
+        }
+
+        @-webkit-keyframes bounce {
+            25% {
+                transform: translatey(5px);
+            }
+            75% {
+                transform: translatey(-5px);
+            }
+        }
+
+        @keyframes bounce {
+            25% {
+                transform: translatey(5px);
+            }
+            75% {
+                transform: translatey(-5px);
+            }
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div class="main-container background" style="background-color: #3f4549">
+    <div class="row">
+        <div class=""></div>
+        <div class="login-box">
+            <div class="login-key">
+                <img src="assert/img/icons8-authentication-100 (1).png">
+            </div>
+            <div class="col-lg-12 login-title">
+                ADMIN LOGIN
+            </div>
+
+            <div class="col-lg-12 login-form">
+                <div class="col-lg-12 login-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="txtUserName" class="form-control-label">Admin Name</label>
+                            <input id="txtUserName" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtPassword" class="form-control-label">Password</label>
+                            <input id="txtPassword" type="password" class="form-control">
+                        </div>
+
+                        <div class="col-lg-12 loginbttm">
+                            <div class="col-lg-6 login-btm login-text">
+                                <!-- Error Message -->
+                            </div>
+                            <div class="col-lg-6 login-btm login-button">
+                                <button id="btnLogin" class="l-button">
+                                    <span>Login</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div></div>
+        </div>
+    </div>
+</div>
+<div class="main-container sub-container">
+    <div class="rows-main sub-pane-container">
+        <div class="row-img">
+            <div class="columns">
+                <div class="containers">
+                    <div class="imageWrapper">
+                        <img id="hotel_view1_img" class="image"
+                             src="assert/img/icons8-upload-file-96.png">
+                    </div>
+                </div>
+                <button class="file-upload">
+                    <input id="hotel_view1" type="file" class="file-input">Choose File
+                </button>
+            </div>
+            <div class="columns">
+                <div class="containers">
+                    <div class="imageWrapper">
+                        <img id="hotel_view2_img" class="image"
+                             src="assert/img/icons8-upload-file-96.png">
+                    </div>
+                </div>
+                <button class="file-upload">
+                    <input id="hotel_view2" type="file" class="file-input">Choose File
+                </button>
+            </div>
+            <div class="columns">
+                <div class="containers">
+                    <div class="imageWrapper">
+                        <img id="hotel_view3_img" class="image"
+                             src="assert/img/icons8-upload-file-96.png">
+                    </div>
+                </div>
+                <button class="file-upload">
+                    <input id="hotel_view3" type="file" class="file-input">Choose File
+                </button>
+            </div>
+            <div class="columns">
+                <div class="containers">
+                    <div class="imageWrapper">
+                        <img id="hotel_view4_img" class="image"
+                             src="assert/img/icons8-upload-file-96.png">
+                    </div>
+                </div>
+                <button class="file-upload">
+                    <input id="hotel_view4" type="file" class="file-input">Choose File
+                </button>
+            </div>
+        </div>
+        <div class="row-2">
+            <div class="sub-row">
+                <div class="column">
+                    <div class="invisible form__group field">
+                        <input id="hotel_id" required="" placeholder="Name" class="form__field" type="input">
+                        <label class="form__label" for="hotel_id">Hotel Id</label>
+                    </div>
+                    <div class="form__group field">
+                        <input id="hotel_name" required="" placeholder="Name" class="form__field" type="input">
+                        <label class="form__label" for="hotel_name">Hotel Name</label>
+                    </div>
+                    <div class="form__group field">
+                        <input id="hotel_address" required="" placeholder="Address" class="form__field" type="input">
+                        <label class="form__label" for="hotel_address">Hotel Address</label>
+                    </div>
+                    <div class="form__group wraper field">
+                        <div class="box">
+                            <select id="hotel_star_rate">
+                                <option value="0">Star Rate</option>
+                                <option value="2">Star-2</option>
+                                <option value="3">Star-3</option>
+                                <option value="4">Star-4</option>
+                                <option value="Star-5">Star-5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form__group field">
+                        <div style="display: flex ; justify-content: space-between">
+                            <div style="padding-top: 8px">
+                                <label class="custom-label">Pet Allowed</label>
+                            </div>
+                            <div class="checkbox-wrapper-5">
+                                <div class="check">
+                                    <input id="check-5" type="checkbox">
+                                    <label for="check-5"></label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="sub-row">
+                <div class="column">
+                    <div class="form__group field">
+                        <input id="hotel_location" required="" placeholder="Location URL" class="form__field" type="input">
+                        <label class="form__label" for="hotel_location">Location URL</label>
+                    </div>
+                    <div class="numbers">
+                        <div class="form__group field" id="mb1">
+                            <input id="hotel_mobile1" required="" placeholder="Mobile NO" class="form__field" type="tel">
+                            <label class="form__label" for="hotel_mobile1">Mobile NO</label>
+                        </div>
+                        <div class="form__group field" id="mb2">
+                            <input id="hotel_mobile2" required="" placeholder="Mobile NO" class="form__field" type="tel">
+                            <label class="form__label" for="hotel_mobile2">Mobile NO</label>
+                        </div>
+
+                    </div>
+                    <div class="form__group field">
+                        <input id="hotel_email" required="" placeholder="E - Mail" class="form__field" type="email">
+                        <label class="form__label" for="hotel_email">E - Mail</label>
+                    </div>
+                </div>
+            </div>
+            <div class="sub-row">
+                <div class="column">
+                    <div class="numbers gap">
+                        <div class="form__group field">
+                            <input id="type1" required=""
+                                   placeholder="Full Board With AC Luxury Room Double" class="form__field"
+                                   type="number">
+                            <label class="form__label" for="type1">Full Board With AC
+                                Luxury Room Double</label>
+                        </div>
+                        <div class="form__group field">
+                            <input id="type2" required=""
+                                   placeholder="Half Board With AC Luxury Room Double" class="form__field"
+                                   type="number">
+                            <label class="form__label" for="type2">Half Board With AC
+                                Luxury Room Double</label>
+                        </div>
+                        <div class="form__group field">
+                            <input id="type3" required=""
+                                   placeholder="Full Board With AC Luxury Room Triple" class="form__field"
+                                   type="number">
+                            <label class="form__label" for="type3">Full Board With AC
+                                Luxury Room Triple</label>
+                        </div>
+                        <div class="form__group field">
+                            <input id="type4" required=""
+                                   placeholder="Half Board With AC Luxury Room Triple" class="form__field"
+                                   type="number">
+                            <label class="form__label" for="type4">Half Board With AC
+                                Luxury Room Triple</label>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div>
+            </div>
+        </div>
+        <div class="butto-set">
+            <button id="btnSaveHotel" class="btn">
+                Save
+            </button>
+            <button id="btnUpdateHotel" class="btn">
+                Update
+            </button>
+            <button id="btnDeleteHotel" class="btn">
+                Delete
+            </button>
+            <button id="btnClearHotelData" class="btn">
+                Clear
+            </button>
+        </div>
+        <div style="display: flex;justify-content: center">
+            <div class="input-container">
+                <input id="txtSearchHotel" placeholder="Search something..." class="input" name="text">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon">
+                    <g stroke-width="0" id="SVGRepo_bgCarrier"></g>
+                    <g stroke-linejoin="round" stroke-linecap="round" id="SVGRepo_tracerCarrier"></g>
+                    <g id="SVGRepo_iconCarrier">
+                        <rect fill="white"></rect>
+                        <path d="M7.25007 2.38782C8.54878 2.0992 10.1243 2 12 2C13.8757 2 15.4512 2.0992 16.7499 2.38782C18.06 2.67897 19.1488 3.176 19.9864 4.01358C20.824 4.85116 21.321 5.94002 21.6122 7.25007C21.9008 8.54878 22 10.1243 22 12C22 13.8757 21.9008 15.4512 21.6122 16.7499C21.321 18.06 20.824 19.1488 19.9864 19.9864C19.1488 20.824 18.06 21.321 16.7499 21.6122C15.4512 21.9008 13.8757 22 12 22C10.1243 22 8.54878 21.9008 7.25007 21.6122C5.94002 21.321 4.85116 20.824 4.01358 19.9864C3.176 19.1488 2.67897 18.06 2.38782 16.7499C2.0992 15.4512 2 13.8757 2 12C2 10.1243 2.0992 8.54878 2.38782 7.25007C2.67897 5.94002 3.176 4.85116 4.01358 4.01358C4.85116 3.176 5.94002 2.67897 7.25007 2.38782ZM9 11.5C9 10.1193 10.1193 9 11.5 9C12.8807 9 14 10.1193 14 11.5C14 12.8807 12.8807 14 11.5 14C10.1193 14 9 12.8807 9 11.5ZM11.5 7C9.01472 7 7 9.01472 7 11.5C7 13.9853 9.01472 16 11.5 16C12.3805 16 13.202 15.7471 13.8957 15.31L15.2929 16.7071C15.6834 17.0976 16.3166 17.0976 16.7071 16.7071C17.0976 16.3166 17.0976 15.6834 16.7071 15.2929L15.31 13.8957C15.7471 13.202 16 12.3805 16 11.5C16 9.01472 13.9853 7 11.5 7Z"
+                              clip-rule="evenodd" fill-rule="evenodd"></path>
+                    </g>
+                </svg>
+            </div>
+        </div>
+        <div class="table-users">
+            <div class="header">Users</div>
+            <table cellspacing="0">
+                <tr>
+                    <th>Picture</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th width="230">Comments</th>
+                </tr>
+
+                <tr>
+                    <td><img src="https://i.picsum.photos/id/1005/100/100.jpg" alt=""/></td>
+                    <td>Jane Doe</td>
+                    <td>jane.doe@foo.com</td>
+                    <td>01 800 2000</td>
+                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</td>
+                </tr>
+
+                <tr>
+                    <td><img src="https://i.picsum.photos/id/1027/100/100.jpg" alt=""/></td>
+                    <td>John Doe</td>
+                    <td>john.doe@foo.com</td>
+                    <td>01 800 2000</td>
+                    <td>Blanditiis, aliquid numquam iure voluptatibus ut maiores explicabo ducimus neque, nesciunt rerum
+                        perferendis, inventore.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><img src="https://i.picsum.photos/id/64/100/100.jpg" alt=""/></td>
+                    <td>Jane Smith</td>
+                    <td>jane.smith@foo.com</td>
+                    <td>01 800 2000</td>
+                    <td> Culpa praesentium unde pariatur fugit eos recusandae voluptas.</td>
+                </tr>
+
+                <tr>
+                    <td><img src="https://i.picsum.photos/id/1025/100/100.jpg" alt=""/></td>
+                    <td>John Smith</td>
+                    <td>john.smith@foo.com</td>
+                    <td>01 800 2000</td>
+                    <td>Aut voluptatum accusantium, eveniet, sapiente quaerat adipisci consequatur maxime temporibus
+                        quas, dolorem impedit.
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="main-container sub-container-1">
+    <div class="rows-main sub-pane-container">
+        <div class="search_guide">
+            <div class="search">
+                <div class="search-box">
+                    <div class="search-field">
+                        <input id="txtSearchGuide" placeholder="Search..." class="input" type="text">
+                        <div class="search-box-icon">
+                            <button id="btnSearchGuide" class="btn-icon-content">
+                                <i class="search-icon">
+                                    <svg xmlns="://www.w3.org/2000/svg" version="1.1" viewBox="0 0 512 512"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" fill="#fff"></path></svg>
+                                </i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row-2">
+            <div class="sub-row">
+                <div class="invisible form__group field">
+                    <input id="guide_id" required="" placeholder="ID" class="form__field" type="input">
+                    <label class="form__label" for="guide_id">ID</label>
+                </div>
+                <div class="form__group field">
+                    <input id="guide_name" required="" placeholder="Name" class="form__field" type="input">
+                    <label class="form__label" for="guide_name">Name</label>
+                </div>
+                <div class="form__group field">
+                    <input id="guide_address" required="" placeholder="Address" class="form__field" type="input">
+                    <label class="form__label" for="guide_address">Address</label>
+                </div>
+                <div class="form__group field">
+                    <input id="guide_contact" required="" placeholder="Contact" class="form__field" type="input">
+                    <label class="form__label" for="guide_contact">Contact</label>
+                </div>
+            </div>
+            <div class="sub-row">
+                <div class="form__group field" id="gbday">
+                    <input id="guide_birthday" required="" placeholder="Birthday" class="form__field" type="date">
+                    <label class="form__label" for="guide_birthday">Birth Day</label>
+                </div>
+                <div class="form__group field" id="manval">
+                    <input id="guide_man_day_value" required="" placeholder="Man Day Value" class="form__field"
+                           type="number">
+                    <label class="form__label" for="guide_man_day_value">Man Day Value</label>
+                </div>
+            </div>
+            <div class="sub-row">
+                <div class="form__group field text-area">
+                    <!--<input id="guide_experience" required="" placeholder="Contact" class="form__field" type="text">-->
+                    <textarea id="guide_experience"></textarea>
+                    <label class="form__label" for="guide_experience">Experience</label>
+                </div>
+            </div>
+        </div>
+        <div class="row-img">
+            <div class="columns-2">
+                <label for="guide_id_front" class="custum-file-upload" id="idfront">
+                    <img class="in-img" id="guide_id_front_img" src="">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24" fill="" xmlns="http://www.w3.org/2000/svg">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                      d="M10 1C9.73478 1 9.48043 1.10536 9.29289 1.29289L3.29289 7.29289C3.10536 7.48043 3 7.73478 3 8V20C3 21.6569 4.34315 23 6 23H7C7.55228 23 8 22.5523 8 22C8 21.4477 7.55228 21 7 21H6C5.44772 21 5 20.5523 5 20V9H10C10.5523 9 11 8.55228 11 8V3H18C18.5523 3 19 3.44772 19 4V9C19 9.55228 19.4477 10 20 10C20.5523 10 21 9.55228 21 9V4C21 2.34315 19.6569 1 18 1H10ZM9 7H6.41421L9 4.41421V7ZM14 15.5C14 14.1193 15.1193 13 16.5 13C17.8807 13 19 14.1193 19 15.5V16V17H20C21.1046 17 22 17.8954 22 19C22 20.1046 21.1046 21 20 21H13C11.8954 21 11 20.1046 11 19C11 17.8954 11.8954 17 13 17H14V16V15.5ZM16.5 11C14.142 11 12.2076 12.8136 12.0156 15.122C10.2825 15.5606 9 17.1305 9 19C9 21.2091 10.7909 23 13 23H20C22.2091 23 24 21.2091 24 19C24 17.1305 22.7175 15.5606 20.9844 15.122C20.7924 12.8136 18.858 11 16.5 11Z"
+                                      fill=""></path>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="text">
+                        <span>Guide ID Front</span>
+                    </div>
+                    <input class="custom-input" id="guide_id_front" type="file">
+                </label>
+
+
+                <label for="guide_id_rear" class="custum-file-upload" id="idrear">
+                    <img class="in-img" id="guide_id_rear_img" src="">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24" fill="" xmlns="http://www.w3.org/2000/svg">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                      d="M10 1C9.73478 1 9.48043 1.10536 9.29289 1.29289L3.29289 7.29289C3.10536 7.48043 3 7.73478 3 8V20C3 21.6569 4.34315 23 6 23H7C7.55228 23 8 22.5523 8 22C8 21.4477 7.55228 21 7 21H6C5.44772 21 5 20.5523 5 20V9H10C10.5523 9 11 8.55228 11 8V3H18C18.5523 3 19 3.44772 19 4V9C19 9.55228 19.4477 10 20 10C20.5523 10 21 9.55228 21 9V4C21 2.34315 19.6569 1 18 1H10ZM9 7H6.41421L9 4.41421V7ZM14 15.5C14 14.1193 15.1193 13 16.5 13C17.8807 13 19 14.1193 19 15.5V16V17H20C21.1046 17 22 17.8954 22 19C22 20.1046 21.1046 21 20 21H13C11.8954 21 11 20.1046 11 19C11 17.8954 11.8954 17 13 17H14V16V15.5ZM16.5 11C14.142 11 12.2076 12.8136 12.0156 15.122C10.2825 15.5606 9 17.1305 9 19C9 21.2091 10.7909 23 13 23H20C22.2091 23 24 21.2091 24 19C24 17.1305 22.7175 15.5606 20.9844 15.122C20.7924 12.8136 18.858 11 16.5 11Z"
+                                      fill=""></path>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="text">
+                        <span>Guide ID Rear</span>
+                    </div>
+                    <input class="custom-input" id="guide_id_rear" type="file">
+                </label>
+
+                <label for="guide_profile_pic" class="custum-file-upload" id="gpropic">
+                    <img class="in-img" id="guide_profile_pic_img" src="">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24" fill="" xmlns="http://www.w3.org/2000/svg">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                      d="M10 1C9.73478 1 9.48043 1.10536 9.29289 1.29289L3.29289 7.29289C3.10536 7.48043 3 7.73478 3 8V20C3 21.6569 4.34315 23 6 23H7C7.55228 23 8 22.5523 8 22C8 21.4477 7.55228 21 7 21H6C5.44772 21 5 20.5523 5 20V9H10C10.5523 9 11 8.55228 11 8V3H18C18.5523 3 19 3.44772 19 4V9C19 9.55228 19.4477 10 20 10C20.5523 10 21 9.55228 21 9V4C21 2.34315 19.6569 1 18 1H10ZM9 7H6.41421L9 4.41421V7ZM14 15.5C14 14.1193 15.1193 13 16.5 13C17.8807 13 19 14.1193 19 15.5V16V17H20C21.1046 17 22 17.8954 22 19C22 20.1046 21.1046 21 20 21H13C11.8954 21 11 20.1046 11 19C11 17.8954 11.8954 17 13 17H14V16V15.5ZM16.5 11C14.142 11 12.2076 12.8136 12.0156 15.122C10.2825 15.5606 9 17.1305 9 19C9 21.2091 10.7909 23 13 23H20C22.2091 23 24 21.2091 24 19C24 17.1305 22.7175 15.5606 20.9844 15.122C20.7924 12.8136 18.858 11 16.5 11Z"
+                                      fill=""></path>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="text">
+                        <span>Upload Profile Picture</span>
+                    </div>
+                    <input id="guide_profile_pic" class="custom-input" type="file">
+                </label>
+
+
+
+            </div>
+        </div>
+        <div class="row-img">
+            <div class="columns-2">
+
+                <label for="guide_nic-front" class="custum-file-upload" id="nicfront">
+                    <img class="in-img" id="guide_nic-front_img" src="">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24" fill="" xmlns="http://www.w3.org/2000/svg">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                      d="M10 1C9.73478 1 9.48043 1.10536 9.29289 1.29289L3.29289 7.29289C3.10536 7.48043 3 7.73478 3 8V20C3 21.6569 4.34315 23 6 23H7C7.55228 23 8 22.5523 8 22C8 21.4477 7.55228 21 7 21H6C5.44772 21 5 20.5523 5 20V9H10C10.5523 9 11 8.55228 11 8V3H18C18.5523 3 19 3.44772 19 4V9C19 9.55228 19.4477 10 20 10C20.5523 10 21 9.55228 21 9V4C21 2.34315 19.6569 1 18 1H10ZM9 7H6.41421L9 4.41421V7ZM14 15.5C14 14.1193 15.1193 13 16.5 13C17.8807 13 19 14.1193 19 15.5V16V17H20C21.1046 17 22 17.8954 22 19C22 20.1046 21.1046 21 20 21H13C11.8954 21 11 20.1046 11 19C11 17.8954 11.8954 17 13 17H14V16V15.5ZM16.5 11C14.142 11 12.2076 12.8136 12.0156 15.122C10.2825 15.5606 9 17.1305 9 19C9 21.2091 10.7909 23 13 23H20C22.2091 23 24 21.2091 24 19C24 17.1305 22.7175 15.5606 20.9844 15.122C20.7924 12.8136 18.858 11 16.5 11Z"
+                                      fill=""></path>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="text">
+                        <span>Guide NIC Front</span>
+                    </div>
+                    <input class="custom-input" id="guide_nic-front" type="file">
+                </label>
+
+                <label for="guide_nic-rear" class="custum-file-upload" id="nicrear">
+                    <img class="in-img" id="guide_nic-rear_img" src="">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24" fill="" xmlns="http://www.w3.org/2000/svg">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                      d="M10 1C9.73478 1 9.48043 1.10536 9.29289 1.29289L3.29289 7.29289C3.10536 7.48043 3 7.73478 3 8V20C3 21.6569 4.34315 23 6 23H7C7.55228 23 8 22.5523 8 22C8 21.4477 7.55228 21 7 21H6C5.44772 21 5 20.5523 5 20V9H10C10.5523 9 11 8.55228 11 8V3H18C18.5523 3 19 3.44772 19 4V9C19 9.55228 19.4477 10 20 10C20.5523 10 21 9.55228 21 9V4C21 2.34315 19.6569 1 18 1H10ZM9 7H6.41421L9 4.41421V7ZM14 15.5C14 14.1193 15.1193 13 16.5 13C17.8807 13 19 14.1193 19 15.5V16V17H20C21.1046 17 22 17.8954 22 19C22 20.1046 21.1046 21 20 21H13C11.8954 21 11 20.1046 11 19C11 17.8954 11.8954 17 13 17H14V16V15.5ZM16.5 11C14.142 11 12.2076 12.8136 12.0156 15.122C10.2825 15.5606 9 17.1305 9 19C9 21.2091 10.7909 23 13 23H20C22.2091 23 24 21.2091 24 19C24 17.1305 22.7175 15.5606 20.9844 15.122C20.7924 12.8136 18.858 11 16.5 11Z"
+                                      fill=""></path>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="text">
+                        <span>Guide NIC Rear</span>
+                    </div>
+                    <input class="custom-input" id="guide_nic-rear" type="file">
+                </label>
+
+
+                <label for="guide_nic-rear" class="custum-file-upload" id="addmore">
+                    <img class="in-img" id="guide_add_more_img" src="">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24" fill="" xmlns="http://www.w3.org/2000/svg">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                      d="M10 1C9.73478 1 9.48043 1.10536 9.29289 1.29289L3.29289 7.29289C3.10536 7.48043 3 7.73478 3 8V20C3 21.6569 4.34315 23 6 23H7C7.55228 23 8 22.5523 8 22C8 21.4477 7.55228 21 7 21H6C5.44772 21 5 20.5523 5 20V9H10C10.5523 9 11 8.55228 11 8V3H18C18.5523 3 19 3.44772 19 4V9C19 9.55228 19.4477 10 20 10C20.5523 10 21 9.55228 21 9V4C21 2.34315 19.6569 1 18 1H10ZM9 7H6.41421L9 4.41421V7ZM14 15.5C14 14.1193 15.1193 13 16.5 13C17.8807 13 19 14.1193 19 15.5V16V17H20C21.1046 17 22 17.8954 22 19C22 20.1046 21.1046 21 20 21H13C11.8954 21 11 20.1046 11 19C11 17.8954 11.8954 17 13 17H14V16V15.5ZM16.5 11C14.142 11 12.2076 12.8136 12.0156 15.122C10.2825 15.5606 9 17.1305 9 19C9 21.2091 10.7909 23 13 23H20C22.2091 23 24 21.2091 24 19C24 17.1305 22.7175 15.5606 20.9844 15.122C20.7924 12.8136 18.858 11 16.5 11Z"
+                                      fill=""></path>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="text">
+                        <span>Add More</span>
+                    </div>
+                    <input class="custom-input" id="guide_add_more" type="file">
+                </label>
+            </div>
+        </div>
+        <div class="butto-set">
+            <button id="btnSaveGuide" class="btn">
+                Save
+            </button>
+            <button id="btnUpdateGuide" class="btn">
+                Update
+            </button>
+            <button class="btn" id="btndeleteGuide">
+                Delete
+            </button>
+            <button class="btn" id="btnclearGuide">
+                Clear
+            </button>
+        </div>
+        <div class="table-users table-guide">
+            <div class="header">Guides</div>
+            <table cellspacing="0">
+                <tr>
+                    <th>Picture</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th width="230">Comments</th>
+                </tr>
+
+                <tr>
+                    <td><img src="https://i.picsum.photos/id/1005/100/100.jpg" alt=""/></td>
+                    <td>Jane Doe</td>
+                    <td>jane.doe@foo.com</td>
+                    <td>01 800 2000</td>
+                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</td>
+                </tr>
+
+                <tr>
+                    <td><img src="https://i.picsum.photos/id/1027/100/100.jpg" alt=""/></td>
+                    <td>John Doe</td>
+                    <td>john.doe@foo.com</td>
+                    <td>01 800 2000</td>
+                    <td>Blanditiis, aliquid numquam iure voluptatibus ut maiores explicabo ducimus neque, nesciunt rerum
+                        perferendis, inventore.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><img src="https://i.picsum.photos/id/64/100/100.jpg" alt=""/></td>
+                    <td>Jane Smith</td>
+                    <td>jane.smith@foo.com</td>
+                    <td>01 800 2000</td>
+                    <td> Culpa praesentium unde pariatur fugit eos recusandae voluptas.</td>
+                </tr>
+
+                <tr>
+                    <td><img src="https://i.picsum.photos/id/1025/100/100.jpg" alt=""/></td>
+                    <td>John Smith</td>
+                    <td>john.smith@foo.com</td>
+                    <td>01 800 2000</td>
+                    <td>Aut voluptatum accusantium, eveniet, sapiente quaerat adipisci consequatur maxime temporibus
+                        quas, dolorem impedit.
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="main-container sub-container-2">
+    <div class="rows-main sub-pane-container top-padding relative_position">
+        <div class="search_vehicle">
+            <div class="searchBox">
+                <input id="txtSearchVehicle" class="searchInput" type="text" name="" placeholder="Search something">
+                <button id="btnSearchVehicle" class="searchButton" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29" fill="none">
+                        <g clip-path="url(#clip0_2_17)">
+                            <g filter="url(#filter0_d_2_17)">
+                                <path d="M23.7953 23.9182L19.0585 19.1814M19.0585 19.1814C19.8188 18.4211 20.4219 17.5185 20.8333 16.5251C21.2448 15.5318 21.4566 14.4671 21.4566 13.3919C21.4566 12.3167 21.2448 11.252 20.8333 10.2587C20.4219 9.2653 19.8188 8.36271 19.0585 7.60242C18.2982 6.84214 17.3956 6.23905 16.4022 5.82759C15.4089 5.41612 14.3442 5.20435 13.269 5.20435C12.1938 5.20435 11.1291 5.41612 10.1358 5.82759C9.1424 6.23905 8.23981 6.84214 7.47953 7.60242C5.94407 9.13789 5.08145 11.2204 5.08145 13.3919C5.08145 15.5634 5.94407 17.6459 7.47953 19.1814C9.01499 20.7168 11.0975 21.5794 13.269 21.5794C15.4405 21.5794 17.523 20.7168 19.0585 19.1814Z" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" shape-rendering="crispEdges"></path>
+                            </g>
+                        </g>
+                        <defs>
+                            <filter id="filter0_d_2_17" x="-0.418549" y="3.70435" width="29.7139" height="29.7139" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix>
+                                <feOffset dy="4"></feOffset>
+                                <feGaussianBlur stdDeviation="2"></feGaussianBlur>
+                                <feComposite in2="hardAlpha" operator="out"></feComposite>
+                                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"></feColorMatrix>
+                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_2_17"></feBlend>
+                                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_2_17" result="shape"></feBlend>
+                            </filter>
+                            <clipPath id="clip0_2_17">
+                                <rect width="28.0702" height="28.0702" fill="white" transform="translate(0.403503 0.526367)"></rect>
+                            </clipPath>
+                        </defs>
+                    </svg>
+
+
+                </button>
+            </div>
+        </div>
+        <div class="row-2">
+            <div class="sub-row">
+                <div class="form__group field invisible ">
+                    <input id="vehicle_id" required="" hidden="hidden" placeholder="Vehicle Name" class="form__field" type="text">
+                    <label class="form__label" for="vehicle_id">Vehicle Id</label>
+                </div>
+                <div class="form__group field">
+                    <input id="vehicle_name" required="" placeholder="Vehicle Name" class="form__field" type="text">
+                    <label class="form__label" for="vehicle_name">Vehicle Name</label>
+                </div>
+                <div class="form__group field">
+                    <input id="vehicle_type" required="" placeholder="Vehicle Type" class="form__field" type="text">
+                    <label class="form__label" for="vehicle_type">Vehicle Type</label>
+
+                </div>
+                <div class="form__group field">
+                    <input id="vehicle_seat_capacity" required="" placeholder="Seat Capacity" class="form__field"
+                           type="number">
+                    <label class="form__label" for="vehicle_seat_capacity">Seat Capacity</label>
+                </div>
+
+
+            </div>
+            <div class="sub-row">
+
+                <div class="form__group field">
+                    <input id="vehicle_price_for_1km" required="" placeholder="Price For 1KM" class="form__field"
+                           type="number">
+                    <label class="form__label" for="vehicle_price_for_1km">Price For 1KM</label>
+                </div>
+                <div class="form__group field">
+                    <input id="vehicle_price_for_100km" required="" placeholder="Price For 100KM" class="form__field"
+                           type="number">
+                    <label class="form__label" for="vehicle_price_for_100km">Price For 100KM</label>
+                </div>
+                <div class="form__group field">
+                    <input id="vehicle_fuel_usage" required="" placeholder="Vehicle Fuel Usage" class="form__field"
+                           type="number">
+                    <label class="form__label" for="vehicle_fuel_usage">Vehicle Fuel Usage</label>
+                </div>
+            </div>
+            <div class="sub-row">
+                <div class="form__group wraper field">
+                    <div class="box box-1">
+                        <select id="vehicle_category">
+                            <option value="Category">Category</option>
+                            <option value="Economy">Economy</option>
+                            <option value="Mid-Range">Mid-Range</option>
+                            <option value="Luxury">Luxury</option>
+                            <option value="Super-Luxury">Super-Luxury</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form__group field v-in">
+                    <div style="display: flex ; justify-content: space-between">
+                        <div style="padding-top: 8px">
+                            <label class="custom-label">Fuel TYPE</label>
+                        </div>
+                        <label class="switch">
+                            <input id="vehicle_fuel_type" type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+
+                </div>
+                <div class="form__group field v-in-h">
+                    <div style="display: flex ; justify-content: space-between">
+                        <div style="padding-top: 8px">
+                            <label class="custom-label">Hybrid</label>
+                        </div>
+                        <label class="switch">
+                            <input id="vehicle_is_hybrid" type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+
+                </div>
+                <div class="form__group field v-in-h">
+                    <div style="display: flex ; justify-content: space-between">
+                        <div style="padding-top: 8px">
+                            <label class="custom-label">Transmission</label>
+                        </div>
+                        <label class="plane-switch">
+                            <input id="vehicle_is_transmission_manual" checked type="checkbox">
+                            <div>
+                                <div>
+                                    <svg viewBox="0 0 13 13">
+                                        <path d="M1.55989957,5.41666667 L5.51582215,5.41666667 L4.47015462,0.108333333 L4.47015462,0.108333333 C4.47015462,0.0634601974 4.49708054,0.0249592654 4.5354546,0.00851337035 L4.57707145,0 L5.36229752,0 C5.43359776,0 5.50087375,0.028779451 5.55026392,0.0782711996 L5.59317877,0.134368264 L7.13659662,2.81558333 L8.29565964,2.81666667 C8.53185377,2.81666667 8.72332694,3.01067661 8.72332694,3.25 C8.72332694,3.48932339 8.53185377,3.68333333 8.29565964,3.68333333 L7.63589819,3.68225 L8.63450135,5.41666667 L11.9308317,5.41666667 C12.5213171,5.41666667 13,5.90169152 13,6.5 C13,7.09830848 12.5213171,7.58333333 11.9308317,7.58333333 L8.63450135,7.58333333 L7.63589819,9.31666667 L8.29565964,9.31666667 C8.53185377,9.31666667 8.72332694,9.51067661 8.72332694,9.75 C8.72332694,9.98932339 8.53185377,10.1833333 8.29565964,10.1833333 L7.13659662,10.1833333 L5.59317877,12.8656317 C5.55725264,12.9280353 5.49882018,12.9724157 5.43174295,12.9907056 L5.36229752,13 L4.57707145,13 L4.55610333,12.9978962 C4.51267695,12.9890959 4.48069792,12.9547924 4.47230803,12.9134397 L4.47223088,12.8704208 L5.51582215,7.58333333 L1.55989957,7.58333333 L0.891288881,8.55114605 C0.853775374,8.60544678 0.798421006,8.64327676 0.73629202,8.65879796 L0.672314689,8.66666667 L0.106844414,8.66666667 L0.0715243949,8.66058466 L0.0715243949,8.66058466 C0.0297243066,8.6457608 0.00275502199,8.60729104 0,8.5651586 L0.00593007386,8.52254537 L0.580855011,6.85813984 C0.64492547,6.67265611 0.6577034,6.47392717 0.619193545,6.28316421 L0.580694768,6.14191703 L0.00601851064,4.48064746 C0.00203480725,4.4691314 0,4.45701613 0,4.44481314 C0,4.39994001 0.0269259152,4.36143908 0.0652999725,4.34499318 L0.106916826,4.33647981 L0.672546853,4.33647981 C0.737865848,4.33647981 0.80011301,4.36066329 0.848265401,4.40322477 L0.89131128,4.45169723 L1.55989957,5.41666667 Z"
+                                              fill="currentColor"></path>
+                                    </svg>
+                                </div>
+                                <span class="street-middle"></span>
+                                <span class="cloud"></span>
+                                <span class="cloud two"></span>
+                            </div>
+                        </label>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row-img">
+            <div class="columns">
+                <div class="containers">
+                    <div class="imageWrapper">
+                        <img id="vehicle_front_view_img" class="image"
+                             src="assert/img/icons8-upload-file-96.png">
+                    </div>
+                </div>
+                <button class="file-upload">
+                    <input id="vehicle_front_view" type="file" class="file-input">Front View
+                </button>
+            </div>
+            <div class="columns">
+                <div class="containers">
+                    <div class="imageWrapper">
+                        <img id="vehicle_rear_view_img" class="image"
+                             src="assert/img/icons8-upload-file-96.png">
+                    </div>
+                </div>
+                <button class="file-upload">
+                    <input id="vehicle_rear_view" type="file" class="file-input">Rear View
+                </button>
+            </div>
+            <div class="columns">
+                <div class="containers">
+                    <div class="imageWrapper">
+                        <img id="vehicle_side_view_img" class="image"
+                             src="assert/img/icons8-upload-file-96.png">
+                    </div>
+                </div>
+                <button class="file-upload">
+                    <input id="vehicle_side_view" type="file" class="file-input">Side View
+                </button>
+            </div>
+            <div class="columns">
+                <div class="containers">
+                    <div class="imageWrapper">
+                        <img id="vehicle_front_interior_img" class="image"
+                             src="assert/img/icons8-upload-file-96.png">
+                    </div>
+                </div>
+                <button class="file-upload">
+                    <input id="vehicle_front_interior" type="file" class="file-input">F-Interior
+                </button>
+            </div>
+            <div class="columns">
+                <div class="containers">
+                    <div class="imageWrapper">
+                        <img id="vehicle_rear_interior_img" class="image"
+                             src="assert/img/icons8-upload-file-96.png">
+                    </div>
+                </div>
+                <button class="file-upload">
+                    <input id="vehicle_rear_interior" type="file" class="file-input">R-Interior
+                </button>
+            </div>
+        </div>
+        <div class="row-2">
+            <div class="sub-row top-margin">
+                <div class="form__group field invisible ">
+                    <input id="driver_id" required="" hidden="hidden" placeholder="Driver Id" class="form__field" type="text">
+                    <label class="form__label" for="driver_id">Driver Id</label>
+                </div>
+                <div class="form__group field">
+                    <input id="driver_name" required="" placeholder="Driver Name" class="form__field" type="text">
+                    <label class="form__label" for="driver_name">Driver Name</label>
+                </div>
+                <div class="form__group field">
+                    <input id="driver_contact" required="" placeholder="Driver Contact" class="form__field" type="tel">
+                    <label class="form__label" for="driver_contact">Driver Contact</label>
+                </div>
+                <div class="form__group field">
+                    <input id="driver_nic" required="" placeholder="Driver NIC" class="form__field" type="number">
+                    <label class="form__label" for="driver_nic">Driver NIC</label>
+                </div>
+            </div>
+            <div class="sub-row">
+                <div class="row-img img-left-margin">
+                    <div class="columns">
+                        <div class="containers">
+                            <div class="imageWrapper">
+                                <img id="driver_license_front_img" class="image"
+                                     src="assert/img/icons8-upload-file-96.png">
+                            </div>
+                        </div>
+                        <button class="file-upload">
+                            <input id="driver_license_front" type="file" class="file-input">License-F
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="sub-row">
+                <div class="row-img">
+                    <div class="columns">
+                        <div class="containers">
+                            <div class="imageWrapper">
+                                <img id="driver_licence_rear_img" class="image"
+                                     src="assert/img/icons8-upload-file-96.png">
+                            </div>
+                        </div>
+                        <button class="file-upload">
+                            <input id="driver_licence_rear" type="file" class="file-input">License-R
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="butto-set">
+            <button id="btnSaveVehicle" class="btn">
+                Save
+            </button>
+            <button id="btnUpdateVehicle" class="btn">
+                Update
+            </button>
+            <button id="btnDeleteVehicle" class="btn">
+                Delete
+            </button>
+            <button id="btnClearVehicleData" class="btn">
+                Clear
+            </button>
+        </div>
+    </div>
+</div>
+<div class="main-container sub-container-3">
+    <div class="rows-main sub-pane-container">
+        <div class="row-2">
+            <div class="sub-row">
+                <div class="search_customer">
+                    <div class="container">
+                        <input checked="" class="checkbox" type="checkbox">
+                        <div class="mainbox">
+                            <div class="iconContainer">
+                                <svg viewBox="0 0 512 512" height="1em" xmlns="http://www.w3.org/2000/svg" class="search_icon"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path></svg>
+                            </div>
+                            <input id="txtSearchCustomer" class="search_input"
+                                   oninvalid="InvalidMsg(this,FIELDS.NAME)"
+                                   oninput="InvalidMsg(this,FIELDS.NAME)" placeholder="search" type="text">
+                        </div>
+                    </div>
+                </div>
+                <div class="row-img">
+                    <div class="columns">
+                        <div class="containers">
+                            <div class="imageWrapper">
+                                <img id="user_profile_pic_img" class="image"
+                                     src="assert/img/icons8-customer-100.png">
+                            </div>
+                        </div>
+                        <button class="file-upload">
+                            <input id="user_profile_pic" type="file" class="file-input">Profile-PIC
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="sub-row top-margin">
+                <div class="form__group field">
+                    <input id="user_name" required="" oninvalid="InvalidMsg(this,FIELDS.NAME)"
+                           oninput="InvalidMsg(this,FIELDS.NAME)"
+                           placeholder="User Name" class="form__field" type="text">
+                    <label class="form__label" for="user_name">User Name</label>
+                </div>
+                <div class="form__group field">
+                    <input id="user_contact" required="" placeholder="User Contact"
+                           oninvalid="InvalidMsg(this,FIELDS.CONTACT)"
+                           oninput="InvalidMsg(this,FIELDS.CONTACT)" class="form__field" type="tel">
+                    <label class="form__label" for="user_contact">User Contact</label>
+                </div>
+                <div class="form__group field">
+                    <input id="user_email" oninvalid="InvalidMsg(this,FIELDS.EMAIL);"
+                           oninput="InvalidMsg(this,FIELDS.EMAIL);" required="" placeholder="User E-Mail"
+                           class="form__field" type="email">
+                    <label class="form__label" for="user_email">User E-Mail</label>
+                </div>
+                <div class="form__group field wraper">
+                    <div class="c-in-g">
+                        <div>
+                            <label class="custom-label">
+                                GENDER
+                            </label>
+                        </div>
+                        <label class="switch">
+                            <input id="user_gender" type="checkbox" class="chbox" value="female">
+                            <div class="slider slider--0">MALE</div>
+                            <div class="slider slider--1">
+                                <div></div>
+                                <div></div>
+                            </div>
+                            <div class="slider slider--2"></div>
+                            <div class="slider slider--3">FEMALE</div>
+                        </label>
+                    </div>
+
+                </div>
+                <div class="nic-image" style="display: flex">
+                    <div class="user-nic-img" id="unicfront">
+                        <div>
+                            <img id="user_nic_front_img" src="assert/img/icons8-add-image-96 (1).png" height="500">
+                        </div>
+
+                        <input id="user_nic_front" type="file">
+                    </div>
+
+                    <div class="user-nic-img" id="unicrear">
+                        <div>
+                            <img id="user_nic_rear_img" src="assert/img/icons8-add-image-96 (1).png" height="500">
+                        </div>
+                        <input id="user_nic_rear" type="file">
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="sub-row top-margin">
+                <div class="form__group field">
+                    <input id="user_birthday" required="" placeholder="User BirthDay" class="form__field" type="date">
+                    <label class="form__label" for="user_birthday">User BirthDay</label>
+                </div>
+                <div class="form__group field">
+                    <input id="user_nic" required="" placeholder="User NIC" class="form__field" type="nic">
+                    <label class="form__label" for="user_nic">User NIC</label>
+                </div>
+            </div>
+            <div class="sub-row" id="useriddiv">
+                <div class="row-2">
+                    <div class="sub-row " >
+                       <!-- <div class="user-nic-img" id="unicfront">
+                            <div>
+                                <img id="user_nic_front_img" src="assert/img/icons8-add-image-96 (1).png" height="500">
+                            </div>
+
+                            <input id="user_nic_front" type="file">
+                        </div>-->
+                       <!-- <div class="user-nic-img" id="unicrear">
+                            <div>
+                                <img id="user_nic_rear_img" src="assert/img/icons8-add-image-96 (1).png" height="500">
+                            </div>
+                            <input id="user_nic_rear" type="file">
+                        </div>-->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="butto-set">
+            <button id="btnSaveUser" class="btn">
+                Save
+            </button>
+            <button id="btnUpdateUser" class="btn">
+                Update
+            </button>
+            <button  class="btn" id="btnDeleteUser">
+                Delete
+            </button>
+            <button id="btnClearCustomerDetails" class="btn">
+                Clear
+            </button>
+        </div>
+
+    </div>
+</div>
+<div class="main-container sub-container-4">
+    <div class="tp_details_container" style="display: flex">
+        <div class="tp_details">
+            <div class="container">
+                <input id="txtTravelPackageId" type="text" name="text" class="input" placeholder="Travel Package Id">
+                <button id="btnSearchTravelPackage" class="search__btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22">
+                        <path d="M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748Z" fill="#efeff1"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="container tp-choice">
+                <label class="select category">
+                    <select id="optTpCategory">
+                        <option value="0" selected>Select Category</option>
+                        <option value="REGULAR">Regular</option>
+                        <option value="MID-LEVEL">Mid-Level</option>
+                        <option value="LUXURY">Luxury</option>
+                        <option value="SUPER LUXURY">Super Luxury</option>
+                    </select>
+                </label>
+            </div>
+            <div class="container">
+                <input id="txtTpHotelCount" type="number" name="text" class="input allRoundCorner" placeholder="Hotel Count">
+            </div>
+            <div class="container">
+                <input id="txtTpPlaceCOunt" type="number" name="text" class="input allRoundCorner" placeholder="Places Count">
+            </div>
+            <div  class="container">
+                <input id="txtTpDayCount" type="number" name="text" class="input allRoundCorner" placeholder="Day Count">
+            </div>
+            <div class="container">
+                <input id="txtTpEstimatedPrice" type="number" name="text" class="input allRoundCorner" placeholder="Estimated Price">
+            </div>
+
+            <div class="butto-set">
+                <button id="btnSaveTravelPackage" class="btn">
+                    Save
+                </button>
+                <button id="btnUpdateTravelPackage" class="btn">
+                    Update
+                </button>
+                <button id="btnDeleteTravelPackage" class="btn">
+                    Delete
+                </button>
+                <button id="btnClearTravelPackageDetails" class="btn">
+                    Clear
+                </button>
+            </div>
+
+            <div class="tp_table">
+                <div class="table-users">
+                    <div class="header">Travel Packages</div>
+                    <table cellspacing="0">
+                        <tr>
+                            <th>Picture</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th width="230">Comments</th>
+                        </tr>
+
+                        <tr>
+                            <td><img src="https://i.picsum.photos/id/1005/100/100.jpg" alt=""/></td>
+                            <td>Jane Doe</td>
+                            <td>jane.doe@foo.com</td>
+                            <td>01 800 2000</td>
+                            <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</td>
+                        </tr>
+
+                        <tr>
+                            <td><img src="https://i.picsum.photos/id/1027/100/100.jpg" alt=""/></td>
+                            <td>John Doe</td>
+                            <td>john.doe@foo.com</td>
+                            <td>01 800 2000</td>
+                            <td>Blanditiis, aliquid numquam iure voluptatibus ut maiores explicabo ducimus neque, nesciunt rerum
+                                perferendis, inventore.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><img src="https://i.picsum.photos/id/64/100/100.jpg" alt=""/></td>
+                            <td>Jane Smith</td>
+                            <td>jane.smith@foo.com</td>
+                            <td>01 800 2000</td>
+                            <td> Culpa praesentium unde pariatur fugit eos recusandae voluptas.</td>
+                        </tr>
+
+                        <tr>
+                            <td><img src="https://i.picsum.photos/id/1025/100/100.jpg" alt=""/></td>
+                            <td>John Smith</td>
+                            <td>john.smith@foo.com</td>
+                            <td>01 800 2000</td>
+                            <td>Aut voluptatum accusantium, eveniet, sapiente quaerat adipisci consequatur maxime temporibus
+                                quas, dolorem impedit.
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        </div>
+
+    </div>
+
+</div>
+<script
+        src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous"></script>
+<script>
+    $('.file-input').change(function () {
+        var curElement = $(this).parent().parent().find('.image');
+        console.log(curElement);
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            // get loaded data and render thumbnail.
+            curElement.attr('src', e.target.result);
+        };
+
+        // read the image file as a data URL.
+        reader.readAsDataURL(this.files[0]);
+    });
+
+    $('.user-nic-img').each(function () {
+        var $img = $(this).find('img');
+        var $input = $(this).find('input');
+
+        $input.on('change', function () {
+            var file = this.files[0];
+            if (file) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $img.attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(file);
+            }
+        });
+    });
+
+    $(".custom-input").each(function (){
+        let o = this;
+       $(o).on('change', function (){
+           let file = this.files[0];
+           if (file){
+               let reader = new FileReader();
+               reader.onload = function (e){
+                   $(o).parent().find('img').attr('src', e.target.result);
+
+               }
+               reader.readAsDataURL(file);
+           }
+       }) ;
+    });
+
+    const FIELDS = {
+        NAME: 'name',
+        EMAIL: 'email',
+        PASSWORD: 'password',
+        ADDRESS: 'address',
+        CONTACT: 'contact'
+    }
+
+    // Regular Expressions
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+    const phoneRegex = /^\d{10}$/;
+    const nameRegex = /^[a-zA-Z\s']+$/;
+
+    const isValidField = (data, type) => {
+        switch (type) {
+            case FIELDS.EMAIL:
+                return emailRegex.test(data);
+            case FIELDS.PASSWORD:
+                return passwordRegex.test(data);
+            case FIELDS.CONTACT:
+                return phoneRegex.test(data);
+            case FIELDS.NAME:
+                return nameRegex.test(data);
+            default:
+                return data.trim() !== '';
+        }
+    };
+
+    function InvalidMsg(textbox, type) {
+        if (textbox.value === '') {
+            switch (type) {
+                case FIELDS.EMAIL:
+                    textbox.setCustomValidity('Required email address');
+                    break;
+                case FIELDS.PASSWORD:
+                    textbox.setCustomValidity('Required password');
+                    break;
+                case FIELDS.NAME:
+                    textbox.setCustomValidity('Required name');
+                    break;
+                case FIELDS.ADDRESS:
+                    textbox.setCustomValidity('Required address');
+                    break;
+                case FIELDS.CONTACT:
+                    textbox.setCustomValidity('Required contact number');
+                    break;
+            }
+        } else {
+            switch (type) {
+                case FIELDS.EMAIL:
+                    let flag = isValidField(textbox.value, FIELDS.EMAIL);
+                    if (!flag) {
+                        textbox.setCustomValidity('Invalid email address');
+                        $(textbox).parent().find('label').css('color', 'red');
+                    } else {
+                        textbox.setCustomValidity('');
+                        $(textbox).parent().find('label').removeAttr('style');
+                    }
+                    break;
+                case FIELDS.PASSWORD:
+                    let flagPassword = isValidField(textbox.value, FIELDS.PASSWORD);
+                    if (!flagPassword) {
+                        textbox.setCustomValidity('Password must be at least 8 characters and contain at least one letter and one number');
+                        $(textbox).parent().find('label').css('color', 'red');
+                    } else {
+                        textbox.setCustomValidity('');
+                        $(textbox).parent().find('label').removeAttr('style');
+                    }
+                    break;
+                case FIELDS.NAME:
+                    let flagName = isValidField(textbox.value, FIELDS.NAME);
+                    if (!flagName) {
+                        textbox.setCustomValidity('Invalid name');
+                        $(textbox).parent().find('label').css('color', 'red');
+                    } else {
+                        textbox.setCustomValidity('');
+                        $(textbox).parent().find('label').removeAttr('style');
+                    }
+                    break;
+                case FIELDS.CONTACT:
+                    let flagContact = isValidField(textbox.value, FIELDS.CONTACT);
+                    if (!flagContact) {
+                        textbox.setCustomValidity('Invalid contact number');
+                        $(textbox).parent().find('label').css('color', 'red');
+                    } else {
+                        textbox.setCustomValidity('');
+                        $(textbox).parent().find('label').removeAttr('style');
+                    }
+                    break;
+                default:
+                    textbox.setCustomValidity('');
+                    $(textbox).parent().find('label').removeAttr('style');
+                    break;
+            }
+        }
+    }
+
+
+
+
+
+    /*function getBase64Image(img) {
+        var canvas = document.createElement("canvas");
+        canvas.width = img.width;
+        canvas.height = img.height;
+        var ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0);
+        var dataURL = canvas.toDataURL("image/png");
+        return dataURL.replace(/^data:image\/?[A-z]*;base64,/);
+    }
+    var base64 = getBase64Image(document.getElementById("imageid"));*/
+
+</script>
+<script src="assert/script/controller/login.js" type="module"></script>
+<script src="assert/script/controller/user_controller.js" type="module"></script>
+<script src="assert/script/controller/vehicle_controller.js" type="module"></script>
+<script src="assert/script/controller/hotel_controller.js" type="module"></script>
+<script src="assert/script/controller/guide_controller.js" type="module"></script>
+<script src="assert/script/controller/tp_controller.js" type="module"></script>
+</body>
+</html>
